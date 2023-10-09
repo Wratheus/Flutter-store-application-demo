@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 
-class CatalogSaleCard extends StatelessWidget {
-  const CatalogSaleCard({super.key});
+class CatalogSaleView extends StatelessWidget {
+  const CatalogSaleView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +14,8 @@ class CatalogSaleCard extends StatelessWidget {
           const SliverAppBar(
             expandedHeight: 250.0,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text('Goa', textScaleFactor: 1),
-              background: FlutterLogo()
+                title: Text('Goa', textScaleFactor: 1),
+                background: FlutterLogo()
             ),
           ),
           //3
