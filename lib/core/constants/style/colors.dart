@@ -1,7 +1,4 @@
-
 import 'package:flutter/material.dart';
-
-import 'layout_constants.dart';
 
 class CustomColors {
 
@@ -12,8 +9,8 @@ class CustomColors {
   static const Color yellow = Color.fromRGBO(234, 214, 121, 0.99);
   static const Color pink = Color.fromRGBO(254, 168, 200, 1);
   static const Color purple = Color.fromRGBO(122, 101, 215, 1);
-  static const Color red = Color.fromRGBO(87 , 18, 30, 1);
+  static const Color red = Color.fromRGBO(90, 12, 26, 1.0);
   static const Color blue = Color.fromRGBO(7, 60, 168, 1);
   static const Color turquoise = Color.fromRGBO(133, 233, 243, 1);
-  static const Color grey = Color.fromRGBO(173, 178, 179, 1.0);
+  static const Color grey = Color.fromRGBO(146, 146, 146, 1.0);
 }

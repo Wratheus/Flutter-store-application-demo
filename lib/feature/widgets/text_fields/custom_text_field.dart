@@ -9,8 +9,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // TODO: FIX WIDTH
-      width: 250,
+      height: 25,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -22,8 +21,9 @@ class CustomTextField extends StatelessWidget {
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 5),
           hintText: hint ?? "",
-          hintStyle: context.theme.textTheme.displayMedium,
+          hintStyle: context.theme.textTheme.titleMedium,
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(width: 1.5, color: context.theme.primaryColor.withOpacity(0.6)),
               borderRadius: BorderRadius.circular(10.0)
@@ -33,7 +33,7 @@ class CustomTextField extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.0)
           ),
         ),
-        style: context.theme.textTheme.bodyMedium,
+        style: context.theme.textTheme.titleMedium,
       ),
     );
   }
