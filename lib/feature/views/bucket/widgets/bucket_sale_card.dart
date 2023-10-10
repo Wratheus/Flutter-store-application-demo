@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
+import 'package:lichi_test/feature/widgets/containers/custom_container.dart';
 
 class BucketSaleCard extends StatelessWidget {
   const BucketSaleCard({super.key});
@@ -28,38 +29,29 @@ class BucketSaleCard extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Text("4 599 руб.",
-                style: context.theme.textTheme.bodyLarge,
+              child: Text("Размер XS",
+                style: context.theme.textTheme.bodySmall,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          const CircleAvatar(
-                            radius: 4,
-                            backgroundColor: Colors.black,
-                          ),
-                          SizedBox(width: 10),
-                          Text("Черный", style: context.theme.textTheme.bodySmall),
-                        ],
-                      ),
-                      Text("Размер \"L\"", style: context.theme.textTheme.bodySmall),
-                    ],
-                  ),
-                  const SizedBox(width: 100), // TODO: fix
-                  Row(
-                    children: [
-                      Text("Кол-во: 1 ^", style: context.theme.textTheme.bodySmall),
-                    ],
-                  )
-                ],
+              child: Text("4 599 руб.",
+                style: context.theme.textTheme.bodyLarge,
               ),
+            ),
+            Row(
+              children: [
+                const CustomContainer(
+                  child: Center(child: Icon(Icons.add)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text("1 ed.", style: context.theme.textTheme.bodyMedium),
+                ),
+                const CustomContainer(
+                  child: Center(child: Icon(Icons.remove)),
+                )
+              ],
             )
           ],
         )

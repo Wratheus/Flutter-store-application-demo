@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
-import 'package:lichi_test/feature/views/bucket/bucket_view.dart';
-import 'package:lichi_test/feature/views/catalog/catalog_category_view.dart';
-import 'package:lichi_test/feature/widgets/text_fields/search_text_field.dart';
+import 'package:lichi_test/feature/views/catalog/widgets/bucket_button.dart';
+import 'package:lichi_test/feature/views/catalog/widgets/catalog_sale_card.dart';
+import 'package:lichi_test/feature/widgets/buttons/custom_rectangle_button.dart';
 
-import '../../../core/utils/ui/page_transition.dart';
+import '../../../core/constants/style/themes.dart';
+import '../../../core/utils/material_app_bloc/material_app_bloc.dart';
 
 class CatalogView extends StatelessWidget {
   const CatalogView({super.key});
@@ -12,116 +15,99 @@ class CatalogView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Поиск",
-                  style: context.theme.textTheme.bodyLarge,
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20.0),
-                  child: SearchTextField(
-                      hint: "Введите артикул или название модели"
-                  ),
-                ),
-                Text("Lichi Members Club",
-                  style: context.theme.textTheme.bodyMedium,
-                ),
-                GestureDetector(
-                  onTap: () => {
-                    Navigator.pushReplacement(context, SlideRightRoute(page: CatalogCategoryView())),
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: Text("Special Sale",
-                      style: context.theme.textTheme.bodyMedium?.copyWith(color: context.theme.splashColor),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: ListView(
-                    shrinkWrap: true,
+      appBar: AppBar(
+        toolbarHeight: 45,
+        title: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text("Каталог товаров", style: context.theme.textTheme.bodyMedium),
+        ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: BucketCounterButton(),
+          ),
+        ],
+      ),
+      body: CustomScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          slivers: [
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                  (_, int index) {
+                return Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
                     children: [
-                      GestureDetector(
-                        onTap: () => {
-
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 20.0),
-                          child: Text("Одежда",
-                            style: context.theme.textTheme.bodyMedium,
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        child: Text("Каждый день тысячи девушек распаковывают пакеты с "
+                            "новинками Lichi и становятся счастливее, ведь очевидно, "
+                            "что новое платье может изменить день, а с ним и всю жизнь!",
+                          style: context.theme.textTheme.bodyMedium,
+                          textAlign: TextAlign.center,
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () => {
-
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 20.0),
-                          child: Text("Аксессуары",
-                            style: context.theme.textTheme.bodyMedium,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: CustomRectangleButton(
+                                onPressed: () => {
+                                  context.read<MaterialAppBloc>().add(
+                                      MaterialAppChangeThemeEvent(theme: DarkTheme.themeData)),
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.nights_stay,
+                                      size: 40.0,
+                                      color: context.theme.primaryColor,
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Text("Темная тема", style: context.theme.textTheme.bodyMedium),
+                                  ],
+                                )
+                            ),
                           ),
-                        ),
+                          const SizedBox(width: 5),
+                          Expanded(
+                            child: CustomRectangleButton(
+                                onPressed: () => {
+                                  context.read<MaterialAppBloc>().add(MaterialAppChangeThemeEvent(theme: LightTheme.themeData)),
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.sunny,
+                                      size: 40.0,
+                                      color: context.theme.primaryColor,
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Text("Светлая тема", style: context.theme.textTheme.bodyMedium),
+                                  ],
+                                )
+                            ),
+                          )
+                        ],
                       ),
-                      GestureDetector(
-                        onTap: () => {
-
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 20.0),
-                          child: Text("Обувь",
-                            style: context.theme.textTheme.bodyMedium,
-                          ),
+                      GridView.builder(
+                        itemCount: 10,
+                        shrinkWrap: true,
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () => {
-
+                        itemBuilder: (BuildContext context, int index) {
+                          return const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: CatalogSaleCard(),
+                          );
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 20.0),
-                          child: Text("Inspire",
-                            style: context.theme.textTheme.bodyMedium,
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () => {
-
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 20.0),
-                          child: Text("Stores",
-                            style: context.theme.textTheme.bodyMedium,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 300), // TODO: fix height
-                      GestureDetector(
-                        onTap: () => {
-                          Navigator.pushReplacement(context, SlideRightRoute(page: BucketView())),
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 20.0),
-                          child: Text("Корзина",
-                            style: context.theme.textTheme.bodyMedium,
-                          ),
-                        ),
                       ),
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
+                );
+              }),)
+          ]
       ),
     );
   }

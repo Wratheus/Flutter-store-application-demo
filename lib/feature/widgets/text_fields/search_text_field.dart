@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 
+import '../../../core/constants/style/colors.dart';
+
 class SearchTextField extends StatelessWidget {
   final String? hint;
   final TextEditingController? controller;
@@ -8,16 +10,8 @@ class SearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 40,
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: context.theme.primaryColor.withOpacity(0.05),
-            blurRadius: 4,
-          ),
-        ],
-      ),
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
@@ -28,9 +22,9 @@ class SearchTextField extends StatelessWidget {
             borderSide: BorderSide(color: context.theme.primaryColor),
           ),
           hintText: hint ?? "",
-          hintStyle: context.theme.textTheme.titleMedium,
+          hintStyle: context.theme.textTheme.bodyMedium?.copyWith(color: CustomColors.grey),
         ),
-        style: context.theme.textTheme.titleMedium,
+        style: context.theme.textTheme.bodyMedium?.copyWith(color: CustomColors.grey),
       ),
     );
   }

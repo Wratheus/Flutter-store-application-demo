@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
+import 'package:lichi_test/feature/views/catalog/catalog_view.dart';
+import 'package:lichi_test/feature/views/catalog/views/sale/widgets/sale_closure_button.dart';
+import 'package:lichi_test/feature/views/catalog/widgets/bucket_button.dart';
+
+import '../../../../../core/utils/ui/page_transition.dart';
 
 class SaleView extends StatelessWidget {
   const SaleView({super.key});
@@ -7,10 +12,24 @@ class SaleView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //1
+      appBar: AppBar(
+        toolbarHeight: 50,
+        backgroundColor: Colors.transparent,
+        leading: const Padding(
+          padding: EdgeInsets.only(top: 5.0, left: 5.0),
+          child: BucketCounterButton(reverseRow: true),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(top: 5.0, right: 5.0),
+            child: SaleClosureButton(onPressed: () => {
+              Navigator.pushReplacement(context, SlideRightRoute(page: const CatalogView()))
+            }),
+          ),
+        ],
+      ),
       body: CustomScrollView(
         slivers: <Widget>[
-          //2
           SliverAppBar(
             expandedHeight: 450.0,
             flexibleSpace: FlexibleSpaceBar(
@@ -18,10 +37,9 @@ class SaleView extends StatelessWidget {
                   style: context.theme.textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
-                background: FlutterLogo()
+                background: const FlutterLogo()
             ),
           ),
-          //3
           SliverList(
             delegate: SliverChildBuilderDelegate(
                   (_, int index) {
