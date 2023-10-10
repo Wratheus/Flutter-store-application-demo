@@ -1,3 +1,3 @@
 sealed class Constants {
-  static const apiPath = "";
+  static const apiPath = "https://api.lichi.com/";
 }

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 import 'package:lichi_test/feature/widgets/containers/custom_container.dart';
 
-class BucketSaleCard extends StatelessWidget {
-  const BucketSaleCard({super.key});
+class CartProductCard extends StatelessWidget {
+  const CartProductCard({super.key});
 
   @override
   Widget build(BuildContext context) {

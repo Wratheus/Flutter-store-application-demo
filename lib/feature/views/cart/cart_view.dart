@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
-import 'package:lichi_test/feature/views/bucket/widgets/bucket_sale_card.dart';
+import 'package:lichi_test/feature/views/cart/widgets/cart_product_card.dart';
 import 'package:lichi_test/feature/widgets/buttons/custom_rectangle_button.dart';
 
-class BucketView extends StatelessWidget {
-  const BucketView({super.key});
+import '../../../core/utils/ui/page_transition.dart';
+
+class CartView extends StatelessWidget {
+  const CartView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +22,9 @@ class BucketView extends StatelessWidget {
           ListView(
             shrinkWrap: true,
             children: [
-              BucketSaleCard(),
-              BucketSaleCard(),
-              BucketSaleCard(),
+              CartProductCard(),
+              CartProductCard(),
+              CartProductCard(),
             ],
           ),
           Padding(
@@ -41,8 +43,8 @@ class BucketView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: CustomRectangleButton(
-                onPressed: () => {
-
+                onPressed:   () => {
+                  Navigator.pushReplacement(context, SlideRightRoute(page: const CartView()))
                 },
                 child: Text(
                   "ПЕРЕЙТИ К ОФОРМЛЕНИЮ",

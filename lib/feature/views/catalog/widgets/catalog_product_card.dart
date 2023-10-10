@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
-import 'package:lichi_test/feature/views/catalog/views/sale/sale_view.dart';
 
 import '../../../../core/utils/ui/page_transition.dart';
+import '../../product/product_view.dart';
 
-class CatalogSaleCard extends StatelessWidget {
-  const CatalogSaleCard({super.key});
+class CatalogProductCard extends StatelessWidget {
+  const CatalogProductCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => {
-        Navigator.pushReplacement(context, SlideRightRoute(page: const SaleView()))
+        Navigator.of(context).push(SlideRightRoute(page: const ProductView()))
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

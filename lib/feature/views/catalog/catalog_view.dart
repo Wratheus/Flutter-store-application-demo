@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
-import 'package:lichi_test/feature/views/catalog/widgets/bucket_button.dart';
-import 'package:lichi_test/feature/views/catalog/widgets/catalog_sale_card.dart';
+import 'package:lichi_test/feature/widgets/buttons/cart_button.dart';
+import 'package:lichi_test/feature/views/catalog/widgets/catalog_product_card.dart';
 import 'package:lichi_test/feature/widgets/buttons/custom_rectangle_button.dart';
 
 import '../../../core/constants/style/themes.dart';
-import '../../../core/utils/material_app_bloc/material_app_bloc.dart';
+import '../../app/material_app_bloc/material_app_bloc.dart';
 
 class CatalogView extends StatelessWidget {
   const CatalogView({super.key});
@@ -16,20 +16,15 @@ class CatalogView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 45,
-        title: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text("Каталог товаров", style: context.theme.textTheme.bodyMedium),
-        ),
+        title: Text("Каталог товаров", style: context.theme.textTheme.bodyMedium),
         actions: const [
           Padding(
             padding: EdgeInsets.all(10.0),
-            child: BucketCounterButton(),
+            child: CartCounterButton(),
           ),
         ],
       ),
       body: CustomScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
           slivers: [
             SliverList(
               delegate: SliverChildBuilderDelegate(
@@ -99,7 +94,7 @@ class CatalogView extends StatelessWidget {
                         itemBuilder: (BuildContext context, int index) {
                           return const Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: CatalogSaleCard(),
+                            child: CatalogProductCard(),
                           );
                         },
                       ),
