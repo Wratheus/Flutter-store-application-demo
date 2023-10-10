@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
-import 'package:lichi_test/feature/widgets/buttons/closure_button.dart';
 import 'package:lichi_test/feature/widgets/buttons/cart_button.dart';
+import 'package:lichi_test/feature/widgets/buttons/closure_button.dart';
 
 class ProductView extends StatelessWidget {
   const ProductView({super.key});
@@ -15,13 +15,12 @@ class ProductView extends StatelessWidget {
             expandedHeight: 450,
             automaticallyImplyLeading: false,
             flexibleSpace: FlexibleSpaceBar(
-              background: SafeArea(
+                background: SafeArea(
               child: Stack(
                 fit: StackFit.expand,
                 alignment: Alignment.bottomCenter,
                 children: [
-                  const FlutterLogo(
-                  ),
+                  const FlutterLogo(),
                   const Positioned(
                     left: 0,
                     top: 0,
@@ -93,8 +92,6 @@ class ProductView extends StatelessWidget {
                           backgroundColor: Colors.black,
                         ),
                       ),
-
-                      /// TODO: sale size picker
                       Text(
                         "Укороченный кардиган прилегающего силуэта с треугольным отложным воротником и имитацией нагрудных карманов, "
                         "а также асимметричным нижним краем и застежкой на крупные металлизированные пуговицы. Модель выполнена из вязаного трикотажа и образует комплект "
@@ -103,8 +100,6 @@ class ProductView extends StatelessWidget {
                         style: context.theme.textTheme.bodyMedium,
                         textAlign: TextAlign.left,
                       ),
-
-                      /// TODO: expanded text clickers with text Детали, уход, доставка и оплата, Где купить
                       const SizedBox(height: 40),
                       Text(
                         "ART \$апртикул",

@@ -1,7 +1,7 @@
 part of 'material_app_bloc.dart';
 
 @immutable
-abstract class MaterialAppEvent { }
+abstract class MaterialAppEvent {}
 
 class MaterialAppChangeThemeEvent extends MaterialAppEvent {
   final ThemeData theme;

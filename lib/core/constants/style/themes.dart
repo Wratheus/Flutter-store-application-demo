@@ -6,10 +6,9 @@ import 'package:lichi_test/core/constants/style/text_styles.dart';
 import 'colors.dart';
 import 'layout_constants.dart';
 
-abstract class AppTheme { }
+abstract class AppTheme {}
 
 class LightTheme extends AppTheme {
-
   static const Color primary = CustomColors.dark;
   static const Color secondary = CustomColors.white;
   static const Color canvas = CustomColors.grey;
@@ -24,34 +23,28 @@ class LightTheme extends AppTheme {
     canvasColor: canvas,
     splashColor: red,
     textTheme: const TextTheme(
-      bodySmall: CustomTextStyles.darkSmallTextColor,
-      bodyMedium: CustomTextStyles.darkTextColor,
-      bodyLarge: CustomTextStyles.darkBoldTextColor,
-      titleMedium: CustomTextStyles.greyTextColor,
-      titleSmall: CustomTextStyles.greySmallTextColor,
-      titleLarge: CustomTextStyles.greyBoldTextColor,
-      displayMedium: CustomTextStyles.darkTextColor,
-      displaySmall: CustomTextStyles.darkSmallTextColor,
-      displayLarge: CustomTextStyles.darkBoldTextColor,
-      headlineMedium: CustomTextStyles.redTextColor
-    ),
-    iconTheme: const IconThemeData(
-      color: primary, size: LayoutConstants.iconSize),
+        bodySmall: CustomTextStyles.darkSmallTextColor,
+        bodyMedium: CustomTextStyles.darkTextColor,
+        bodyLarge: CustomTextStyles.darkBoldTextColor,
+        titleMedium: CustomTextStyles.greyTextColor,
+        titleSmall: CustomTextStyles.greySmallTextColor,
+        titleLarge: CustomTextStyles.greyBoldTextColor,
+        displayMedium: CustomTextStyles.darkTextColor,
+        displaySmall: CustomTextStyles.darkSmallTextColor,
+        displayLarge: CustomTextStyles.darkBoldTextColor,
+        headlineMedium: CustomTextStyles.redTextColor),
+    iconTheme:
+        const IconThemeData(color: primary, size: LayoutConstants.iconSize),
     scaffoldBackgroundColor: secondary,
     appBarTheme: const AppBarTheme(
       color: secondary,
       elevation: 0,
-      iconTheme: IconThemeData(
-          color: primary, size: LayoutConstants.iconSize
-      ),
+      iconTheme: IconThemeData(color: primary, size: LayoutConstants.iconSize),
       centerTitle: true,
-
-
     ),
     inputDecorationTheme: const InputDecorationTheme(
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: primary)
-      ),
+      focusedBorder:
+          UnderlineInputBorder(borderSide: BorderSide(color: primary)),
       enabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(color: primary),
       ),
@@ -60,11 +53,10 @@ class LightTheme extends AppTheme {
       ),
     ),
     colorScheme: ColorScheme.fromSwatch().copyWith(
-      primary: primary,
-      secondary: secondary,
-      background: secondary,
-      onBackground: canvas
-    ),
+        primary: primary,
+        secondary: secondary,
+        background: secondary,
+        onBackground: canvas),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       elevation: 0,
       backgroundColor: secondary,
@@ -84,7 +76,6 @@ class LightTheme extends AppTheme {
 }
 
 class DarkTheme extends AppTheme {
-
   static const Color primary = CustomColors.white;
   static const Color secondary = CustomColors.darkBackGround;
   static const Color canvas = CustomColors.dark;
@@ -113,28 +104,23 @@ class DarkTheme extends AppTheme {
       labelMedium: CustomTextStyles.whiteTextColor,
       labelLarge: CustomTextStyles.whiteBoldTextColor,
     ),
-    iconTheme: const IconThemeData(
-      color: primary, size: LayoutConstants.iconSize),
+    iconTheme:
+        const IconThemeData(color: primary, size: LayoutConstants.iconSize),
     appBarTheme: const AppBarTheme(
       color: canvas,
       elevation: 0,
-      iconTheme: IconThemeData(
-          color: primary, size: LayoutConstants.iconSize
-      ),
+      iconTheme: IconThemeData(color: primary, size: LayoutConstants.iconSize),
       centerTitle: true,
     ),
     scaffoldBackgroundColor: canvas,
     colorScheme: ColorScheme.fromSwatch().copyWith(
-      primary: primary,
-      secondary: secondary,
-      background: canvas,
-      onBackground: canvas
-    ),
-
+        primary: primary,
+        secondary: secondary,
+        background: canvas,
+        onBackground: canvas),
     inputDecorationTheme: const InputDecorationTheme(
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: primary)
-      ),
+      focusedBorder:
+          UnderlineInputBorder(borderSide: BorderSide(color: primary)),
       enabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(color: primary),
       ),

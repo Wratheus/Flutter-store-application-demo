@@ -7,6 +7,7 @@ import '../../product/product_view.dart';
 class CatalogProductCard extends StatelessWidget {
   const CatalogProductCard({super.key});
 
+// TODO сделать карусельку
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,11 +22,13 @@ class CatalogProductCard extends StatelessWidget {
             size: 50,
           ),
           const SizedBox(height: 20),
-          Text("Рубашка в тонкую полоску",
+          Text(
+            "Рубашка в тонкую полоску",
             style: context.theme.textTheme.bodySmall,
           ),
           const SizedBox(height: 5),
-          Text("4 299 руб.",
+          Text(
+            "4 299 руб.",
             style: context.theme.textTheme.bodySmall,
           ),
           const Padding(

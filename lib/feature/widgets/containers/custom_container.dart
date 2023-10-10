@@ -5,7 +5,9 @@ class CustomContainer extends StatelessWidget {
   final Color? color;
   final Widget child;
   final Size? size;
-  const CustomContainer({Key? key, required this.child, this.size, this.color}) : super(key: key);
+
+  const CustomContainer({Key? key, required this.child, this.size, this.color})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,6 @@ class CustomContainer extends StatelessWidget {
           color: color ?? context.theme.canvasColor,
         ),
         padding: const EdgeInsets.all(7),
-        child: child
-    );
+        child: child);
   }
 }

@@ -10,12 +10,19 @@ part 'database.g.dart';
 
 class UserCart extends Table {
   IntColumn get id => integer().autoIncrement()();
+
   IntColumn get itemId => integer()();
+
   TextColumn get title => text()();
+
   TextColumn get imageUrl => text()();
+
   TextColumn get itemSize => text()();
+
   TextColumn get itemPrice => text()();
+
   TextColumn get itemColor => text()();
+
   IntColumn get itemCount => integer()();
 }
 

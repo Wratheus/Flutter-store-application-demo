@@ -7,7 +7,7 @@ import 'material_app_bloc/material_app_bloc.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
-
+// TODO: вынести микровиджеты логические куски страниц
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -22,8 +22,7 @@ class App extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'LichiTest',
               theme: (state as MaterialAppLoadedState).theme,
-              home: const CatalogView()
-          );
+              home: const CatalogView());
         },
       ),
     );
