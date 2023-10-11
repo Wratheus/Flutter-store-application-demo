@@ -6,23 +6,6 @@ import 'package:dio/dio.dart';
 import '../../constants/constants.dart';
 import '../models/result.dart';
 
-/* TODO:
-      реквесты ТЗ
-    Url: https://api.lichi.com/category/get_category_product_list
-    Query Params: (Post form-data)
-    -	shop: 2;
-    -	lang: 1;
-    -	category: name;    (new, last, dresses, shoes - на выбор)
-    -	limit: 12; (ограничение количества товаров)
-    -	page: 1;  (для пагинации, если требуется)
-    2.2 Получение информации о товаре по идентификатору
-    Url: https://api.lichi.com/product/get_product_detail
-    Query Params: (Post form-data)
-    -	shop: 2;
-    -	lang: 1;
-    -	id: айди товара;
- */
-
 class ApiController {
   static final _dioClient = Dio();
 
@@ -33,7 +16,6 @@ class ApiController {
     args ??= {};
     final String requestPath = '${Constants.apiPath}$methodName';
 
-    // print('args - $args');
 
     try {
       final Response response = await _dioClient
@@ -42,9 +24,9 @@ class ApiController {
           .timeout(
             const Duration(seconds: 30),
           );
-
+      print(response.statusCode);
       if (response.statusCode == 200) {
-        final responseData = jsonDecode(response.data);
+        final Map<String, dynamic> responseData = jsonDecode(response.data);
         return ApiResult.complete(responseData);
       }
 

@@ -15,15 +15,14 @@ class CartDatabaseController extends AppDatabase
   @override
   Future<int> addItem({required Product item}) async {
     // TODO: if not found INSERT else increment UPDATE
-    // TODO: product model
     return await (into(userCart).insert(UserCartCompanion(
       itemId: Value(item.id),
-      title: Value(item.title),
-      imageUrl: Value(item.imageUrl),
-      itemSize: Value(item.itemSize),
-      itemPrice: Value(item.itemPrice),
-      itemColor: Value(item.itemColor),
-      itemCount: Value(1),
+      title: Value(item.name),
+      imageUrl: Value(item.photos[0].bigImage),
+      itemSize: Value(item.modelSize),
+      itemPrice: Value(item.price),
+      itemColor: Value(item.colors.colorValue.toString()),
+      itemCount: const Value(1),
     )));
   }
 

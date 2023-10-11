@@ -1,26 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:lichi_test/core/utils/ui/app_ui_modals.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
-import 'package:lichi_test/feature/widgets/buttons/cart_button.dart';
-import 'package:lichi_test/feature/widgets/buttons/closure_button.dart';
+import 'package:lichi_test/feature/views/product/widgets/product_sliver_appbar.dart';
+import 'package:lichi_test/feature/widgets/buttons/rectangle_button.dart';
+import 'package:lichi_test/feature/views/product/widgets/product_add_dialog.dart';
+
+import '../../widgets/buttons/cart_button.dart';
+import '../../widgets/buttons/closure_button.dart';
+import 'models/product.dart';
 
 class ProductView extends StatelessWidget {
-  const ProductView({super.key});
-
+  final Product product;
+  const ProductView({super.key, required this.product});
+ // TODO цвета не показываются
   @override
   Widget build(BuildContext context) {
+    final List<Widget> circleColors = [];
+    product.colors.otherColors.forEach((element) {
+      circleColors.add(Container(
+        width: 18,
+        height: 18,
+        decoration: BoxDecoration(
+            color: Color(int.parse(product.colors.colorValue, radix: 16)),
+            shape: BoxShape.circle
+        ),
+      ));});
+    print(circleColors);
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverAppBar(
-            expandedHeight: 450,
-            automaticallyImplyLeading: false,
-            flexibleSpace: FlexibleSpaceBar(
-                background: SafeArea(
+        SliverAppBar(
+        expandedHeight: 450,
+        automaticallyImplyLeading: false,
+        flexibleSpace: FlexibleSpaceBar(
+            background: SafeArea(
               child: Stack(
                 fit: StackFit.expand,
                 alignment: Alignment.bottomCenter,
                 children: [
-                  const FlutterLogo(),
+                  Image.network(product.photos[0].bigImage, fit: BoxFit.fill),
                   const Positioned(
                     left: 0,
                     top: 0,
@@ -50,7 +68,7 @@ class ProductView extends StatelessWidget {
                 ],
               ),
             )),
-          ),
+      ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (_, int index) {
@@ -63,54 +81,45 @@ class ProductView extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        width: 15,
-                        height: 3,
-                        decoration: BoxDecoration(
-                          color: context.theme.primaryColor,
-                        ),
-                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "EXAMPLE TEXT SALE NAME",
+                          product.name,
                           style: context.theme.textTheme.bodyMedium,
                         ),
                       ),
-                      Text(
-                        "999 руб",
-                        style: context.theme.textTheme.bodyMedium,
+
+                      Row(
+                        children: circleColors
                       ),
-                      Text(
-                        "color parameter",
-                        style: context.theme.textTheme.bodySmall,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10.0),
-                        child: CircleAvatar(
-                          /// sale color
-                          backgroundColor: Colors.black,
+                      Padding(
+                        padding: const EdgeInsets.only(bottom:20),
+                        child: Text(
+                          product.colors.colorName,
+                          style: context.theme.textTheme.bodySmall,
                         ),
                       ),
                       Text(
-                        "Укороченный кардиган прилегающего силуэта с треугольным отложным воротником и имитацией нагрудных карманов, "
-                        "а также асимметричным нижним краем и застежкой на крупные металлизированные пуговицы. Модель выполнена из вязаного трикотажа и образует комплект "
-                        "с соответствующей юбкой мини. укороченная модель прямой крой отложной воротник нагрудные карманы длинные рукава асимметричный нижний край застежка на "
-                        "пуговицы манжеты, листочки карманов и нижний край в рубчик",
+                        "${product.price} руб.",
+                        style: context.theme.textTheme.bodyLarge,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 40.0),
+                        child: RectangleButton(
+                            onPressed: () {
+                              AppUIModals.showCupertinoModalDialog(
+                                  context: context,
+                                  child: ProductAddDialog(product: product)
+                              );
+                            },
+                            child: Text("Добавить в корзину", style: context.theme.textTheme.bodyMedium)
+                        ),
+                      ),
+                      Text(
+                        product.descriptions,
                         style: context.theme.textTheme.bodyMedium,
                         textAlign: TextAlign.left,
                       ),
-                      const SizedBox(height: 40),
-                      Text(
-                        "ART \$апртикул",
-                        style: context.theme.textTheme.bodyLarge,
-                      ),
-                      const SizedBox(height: 40),
-                      Text(
-                        "ЕСТЬ ВОПРОС? СВЯЖИТЕСЬ С НАМИ\nПН-ПТ 10:00- 19:00 (мск)",
-                        style: context.theme.textTheme.bodyLarge,
-                        textAlign: TextAlign.center,
-                      )
                     ],
                   ),
                 );

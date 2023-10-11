@@ -1,114 +1,71 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
-import 'package:lichi_test/feature/views/catalog/widgets/catalog_product_card.dart';
-import 'package:lichi_test/feature/widgets/buttons/cart_button.dart';
-import 'package:lichi_test/feature/widgets/buttons/rectangle_button.dart';
+import 'package:lichi_test/feature/views/catalog/bloc/catalog_bloc.dart';
+import 'package:lichi_test/feature/views/catalog/widgets/catalog_appbar.dart';
+import 'package:lichi_test/feature/views/catalog/widgets/catalog_header.dart';
+import 'package:lichi_test/feature/views/catalog/widgets/catalog_product_grid.dart';
+import 'package:lichi_test/feature/views/catalog/widgets/catalog_theme_switcher.dart';
+import 'package:lichi_test/feature/widgets/custom_loading_widget.dart';
+import 'package:lichi_test/feature/widgets/dialogs/error_dialog.dart';
 
-import '../../../core/constants/style/themes.dart';
-import '../../app/material_app_bloc/material_app_bloc.dart';
+import '../../widgets/buttons/cart_button.dart';
 
 class CatalogView extends StatelessWidget {
   const CatalogView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title:
-            Text("Каталог товаров", style: context.theme.textTheme.bodyMedium),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: CartCounterButton(),
-          ),
-        ],
-      ),
-      body: CustomScrollView(slivers: [
-        SliverList(
-          delegate: SliverChildBuilderDelegate((_, int index) {
-            return Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: Text(
-                      "Каждый день тысячи девушек распаковывают пакеты с "
-                      "новинками Lichi и становятся счастливее, ведь очевидно, "
-                      "что новое платье может изменить день, а с ним и всю жизнь!",
-                      style: context.theme.textTheme.bodyMedium,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: RectangleButton(
-                            onPressed: () => {
-                                  context.read<MaterialAppBloc>().add(
-                                      MaterialAppChangeThemeEvent(
-                                          theme: DarkTheme.themeData)),
-                                },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.nights_stay,
-                                  size: 40.0,
-                                  color: context.theme.primaryColor,
-                                ),
-                                const SizedBox(width: 5),
-                                Text("Темная тема",
-                                    style: context.theme.textTheme.bodyMedium),
-                              ],
-                            )),
-                      ),
-                      const SizedBox(width: 5),
-                      Expanded(
-                        child: RectangleButton(
-                            onPressed: () => {
-                                  context.read<MaterialAppBloc>().add(
-                                      MaterialAppChangeThemeEvent(
-                                          theme: LightTheme.themeData)),
-                                },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.sunny,
-                                  size: 40.0,
-                                  color: context.theme.primaryColor,
-                                ),
-                                const SizedBox(width: 5),
-                                Text("Светлая тема",
-                                    style: context.theme.textTheme.bodyMedium),
-                              ],
-                            )),
-                      )
-                    ],
-                  ),
-                  GridView.builder(
-                    itemCount: 10,
-                    shrinkWrap: true,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: CatalogProductCard(),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            );
-          }),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<CatalogBloc>(
+          create: (context) => CatalogBloc()..add(CatalogLoadEvent()),
         )
-      ]),
+      ],
+      child: BlocBuilder<CatalogBloc, CatalogState>(
+          builder: (BuildContext context, CatalogState state) {
+            if (state is CatalogInitialState) {
+              return const CustomLoadingWidget();
+            }
+            if (state is CatalogLoadedState) {
+              return Scaffold(
+                appBar: AppBar(
+                  title: Text("Каталог товаров", style: context.theme.textTheme.bodyMedium),
+                  actions: const [
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: CartCounterButton(),
+                    ),
+                  ],
+                ),
+                body: CustomScrollView(slivers: [
+                  SliverList(
+
+                    delegate: SliverChildBuilderDelegate((_, int index) {
+                      return const Padding(
+                        padding: EdgeInsets.all(10.0), // TODO: padding
+                        child: Column(
+                          children: [
+                            CatalogHeader(),
+                            CatalogThemeSwitcher(),
+                          ],
+                        ),
+                      );
+                    }, childCount: 1),
+                  ),
+                  const CatalogProductGrid(),
+                ]),
+              );
+            }
+            if (state is CatalogLoadingState) {
+              return const CustomLoadingWidget();
+            }
+            if (state is CatalogErrorState) {
+              return const ErrorDialog(route: CatalogView());
+            }
+            return const Placeholder();
+      }
+      )
     );
   }
 }

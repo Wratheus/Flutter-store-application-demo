@@ -29,7 +29,7 @@ class RectangleButton extends StatelessWidget {
             padding: const EdgeInsets.all(7),
             child: Padding(
               padding: const EdgeInsets.all(5.0),
-              child: child,
+              child: Center(child: child),
             )));
   }
 }
