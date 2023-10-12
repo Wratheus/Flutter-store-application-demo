@@ -3,7 +3,8 @@ import '../../../../core/api/models/result.dart';
 import '../../product/models/product.dart';
 
 class CatalogRequests {
-  static Future<ApiResult<dynamic>> getCategoryProductList({required final String category}) async {
+  static Future<ApiResult<dynamic>> getCategoryProductList(
+      {required final String category}) async {
     const String path = "category/get_category_product_list";
     final Map<String, dynamic> args = {
       "shop": 2,

@@ -10,16 +10,13 @@ class CarouselControllerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: context.theme.primaryColor),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-            children: buildCircles()
-        ),
-      )
-    );
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: context.theme.primaryColor),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(children: buildCircles()),
+        ));
   }
 
   List<CarouselCircleContainer> buildCircles() {

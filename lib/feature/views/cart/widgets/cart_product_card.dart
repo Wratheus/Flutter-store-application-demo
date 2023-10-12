@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lichi_test/core/database/database.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 import 'package:lichi_test/feature/views/cart/bloc/cart_bloc.dart';
-import 'package:lichi_test/feature/views/product/widgets/product_color_circle.dart';
+import 'package:lichi_test/feature/widgets/product_color_circle.dart';
 import 'package:lichi_test/feature/widgets/containers/cached_image_container.dart';
 import 'package:lichi_test/feature/widgets/containers/custom_container.dart';
 
@@ -14,7 +14,8 @@ class CartProductCard extends StatelessWidget {
   final UserCartData product;
   final BuildContext parentContext;
 
-  const CartProductCard({super.key, required this.product, required this.parentContext});
+  const CartProductCard(
+      {super.key, required this.product, required this.parentContext});
 
   // TODO selected color icon
   @override
@@ -22,6 +23,7 @@ class CartProductCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0),
       child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
         // onTap: () {
         //   Navigator.pushReplacement(
         //       context, SlideRightRoute(page: ProductView()));
@@ -41,7 +43,8 @@ class CartProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   child: SizedBox(
                     width: 150,
                     child: Text(
@@ -51,13 +54,20 @@ class CartProductCard extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   child: Text(
                     "Размер ${product.itemSize}",
                     style: context.theme.textTheme.bodySmall,
                   ),
                 ),
-                Padding(padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10), child: ProductColorCircle(colorStr: product.itemColor, size: const Size(18, 18),)),
+                Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    child: ProductColorCircle(
+                      colorStr: product.itemColor,
+                      size: const Size(18, 18),
+                    )),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text(
@@ -70,6 +80,7 @@ class CartProductCard extends StatelessWidget {
                   child: Row(
                     children: [
                       GestureDetector(
+                        behavior: HitTestBehavior.translucent,
                         onTap: () {
                           context.read<CartBloc>().add(CartUpdateProductEvent(
                               action: () => App.db

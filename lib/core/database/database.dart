@@ -2,9 +2,8 @@ import 'dart:io';
 
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
-
+import 'package:path_provider/path_provider.dart';
 
 part 'database.g.dart';
 
@@ -33,6 +32,7 @@ class AppDatabase extends _$AppDatabase {
   @override
   int get schemaVersion => 1;
 }
+
 LazyDatabase _openConnection() {
   // the LazyDatabase util lets us find the right location for the file async.
   return LazyDatabase(() async {
@@ -43,4 +43,3 @@ LazyDatabase _openConnection() {
     return NativeDatabase.createInBackground(file);
   });
 }
-

@@ -11,8 +11,6 @@ part 'catalog_event.dart';
 part 'catalog_state.dart';
 
 class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
-  // TODO выбор категорий (виджет)
-  // TODO хэширование изображений
   CatalogBloc() : super(CatalogInitialState()) {
     on(_loadCatalog);
   }
@@ -20,12 +18,13 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   _loadCatalog(CatalogLoadEvent event, Emitter<CatalogState> emit) async {
     emit(CatalogLoadingState());
     try {
-      ApiResult res = await CatalogRequests.getCategoryProductList(category: event.catalogCategory);
+      ApiResult res = await CatalogRequests.getCategoryProductList(
+          category: event.catalogCategory);
       if (res.status) {
         emit(CatalogLoadedState(
             catalogData: res.data, category: event.catalogCategory));
       }
-    } catch(e, t) {
+    } catch (e, t) {
       emit(CatalogErrorState());
     }
   }

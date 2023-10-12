@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 import 'package:lichi_test/feature/views/catalog/utils/catalog_functions.dart';
 import 'package:lichi_test/feature/views/product/models/product.dart';
-import 'package:lichi_test/feature/views/product/widgets/product_color_circle.dart';
-import 'package:lichi_test/feature/widgets/carousel_controller/carousel_controller.dart';
-import 'package:lichi_test/feature/widgets/containers/custom_container.dart';
+import 'package:lichi_test/feature/widgets/product_color_circle.dart';
 
-import '../../../../core/constants/style/colors.dart';
 import '../../../../core/utils/ui/page_transition.dart';
 import '../../product/product_view.dart';
 
@@ -16,11 +13,11 @@ class CatalogProductCard extends StatelessWidget {
 
   const CatalogProductCard({super.key, required this.product});
 
-// TODO сделать карусельку
   @override
   Widget build(BuildContext context) {
     String colorStr = product.colors.colorValue;
     return GestureDetector(
+      behavior: HitTestBehavior.translucent,
       onTap: () => {
         Navigator.of(context)
             .push(SlideRightRoute(page: ProductView(product: product)))
@@ -35,8 +32,7 @@ class CatalogProductCard extends StatelessWidget {
                 enableInfiniteScroll: true,
                 autoPlay: false,
                 scrollDirection: Axis.horizontal,
-              )
-          ),
+              )),
           const SizedBox(height: 5),
           Text(
             product.name,
@@ -52,8 +48,7 @@ class CatalogProductCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: ProductColorCircle(
-                size: const Size(15, 15),
-                colorStr: colorStr),
+                size: const Size(15, 15), colorStr: colorStr),
           )
         ],
       ),

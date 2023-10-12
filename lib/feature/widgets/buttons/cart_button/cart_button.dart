@@ -20,6 +20,7 @@ class CartCounterButton extends StatelessWidget {
     return BlocProvider(
         create: (context) => CartButtonBloc()..add(CartButtonUpdate()),
         child: GestureDetector(
+            behavior: HitTestBehavior.translucent,
             onTap: () => {
                   Navigator.pushReplacement(
                       context, SlideRightRoute(page: const CartView()))
@@ -46,9 +47,8 @@ class CartCounterButton extends StatelessWidget {
                                 SizedBox(
                                   height: 10,
                                   width: 10,
-
                                   child: CircularProgressIndicator(
-                                    strokeWidth: 2,
+                                      strokeWidth: 2,
                                       color: context.theme.primaryColor),
                                 )
                               ])

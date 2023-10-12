@@ -5,6 +5,6 @@ abstract class MaterialAppEvent {}
 
 class MaterialAppUpdateEvent extends MaterialAppEvent {
   final ThemeData theme;
-  MaterialAppUpdateEvent({required this.theme}) : super();
 
+  MaterialAppUpdateEvent({required this.theme}) : super();
 }
