@@ -17,9 +17,9 @@ class CatalogThemeSwitcher extends StatelessWidget {
         Expanded(
           child: RectangleButton(
               onPressed: () => {
-                    context.read<MaterialAppBloc>().add(
-                        MaterialAppChangeThemeEvent(
-                            theme: DarkTheme.themeData)),
+                    context.read<MaterialAppBloc>().add(MaterialAppUpdateEvent(
+                          theme: DarkTheme.themeData,
+                        )),
                   },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -40,8 +40,7 @@ class CatalogThemeSwitcher extends StatelessWidget {
           child: RectangleButton(
               onPressed: () => {
                     context.read<MaterialAppBloc>().add(
-                        MaterialAppChangeThemeEvent(
-                            theme: LightTheme.themeData)),
+                        MaterialAppUpdateEvent(theme: LightTheme.themeData)),
                   },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

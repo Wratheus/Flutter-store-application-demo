@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 
-import '../../../widgets/buttons/cart_button.dart';
+import '../../../widgets/buttons/cart_button/cart_button.dart';
 
 class CatalogAppBar extends AppBar implements PreferredSizeWidget {
   CatalogAppBar({super.key});

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../core/api/models/result.dart';
@@ -21,13 +22,10 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     try {
       ApiResult res = await CatalogRequests.getCategoryProductList(category: event.catalogCategory);
       if (res.status) {
-        emit(CatalogLoadedState(catalogData: res.data));
-      } else {
-        emit(CatalogErrorState());
+        emit(CatalogLoadedState(
+            catalogData: res.data, category: event.catalogCategory));
       }
-    } catch(e, stackTrace) {
-      print(e);
-      print(stackTrace);
+    } catch(e, t) {
       emit(CatalogErrorState());
     }
   }

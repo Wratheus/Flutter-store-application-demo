@@ -6,19 +6,23 @@ import '../../product/models/product.dart';
 import 'catalog_product_card.dart';
 
 class CatalogProductGrid extends StatelessWidget {
-  const CatalogProductGrid({super.key});
+  final List<Product> products;
+  const CatalogProductGrid({super.key, required this.products});
 
   @override
   Widget build(BuildContext context) {
-    final List<Product> products =
-        (context.read<CatalogBloc>().state as CatalogLoadedState).catalogData;
     return SliverGrid(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 0.5,),
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 5,
+        mainAxisExtent: 250 + 100
+      ),
       delegate: SliverChildBuilderDelegate((context, index) {
         return CatalogProductCard(product: products[index]);
-      }, childCount: products.length),
+      },
+          childCount: products.length,
+      ),
     );
   }
 }

@@ -1,11 +1,7 @@
-import 'package:lichi_test/core/database/controllers/cart_controller.dart';
-
 abstract class DatabaseController<T> {
-  Future<int> addItem({required T item});
+  Future<Object> insertUserCartData({required T item});
 
-  Future<int> removeItem({required T item});
+  Future<Object> removeUserCartData({required int itemId});
 
-  Future loadData();
+  Future selectAllUserCartData();
 }
-
-DatabaseController cartController = CartDatabaseController();

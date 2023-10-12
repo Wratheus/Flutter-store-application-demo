@@ -4,10 +4,11 @@ import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 class CustomContainer extends StatelessWidget {
   final Color? color;
   final String? imageUrl;
-  final Widget child;
+  final Widget? child;
   final Size? size;
+  final BoxFit? fit;
 
-  const CustomContainer({Key? key, required this.child, this.size, this.color, this.imageUrl})
+  const CustomContainer({Key? key, this.child, this.size, this.color, this.imageUrl, this.fit})
       : super(key: key);
 
   @override
@@ -17,7 +18,7 @@ class CustomContainer extends StatelessWidget {
         height: size?.height,
         decoration: BoxDecoration(
         image: imageUrl != null ? DecorationImage(
-        image: NetworkImage(imageUrl!), fit: BoxFit.fill) : null,
+        image: NetworkImage(imageUrl!), fit: fit ?? BoxFit.fill) : null,
           borderRadius: BorderRadius.circular(10),
           color: color ?? context.theme.canvasColor,
         ),

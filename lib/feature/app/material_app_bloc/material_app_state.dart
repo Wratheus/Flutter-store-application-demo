@@ -8,3 +8,7 @@ class MaterialAppLoadedState extends MaterialAppState {
 
   MaterialAppLoadedState({required this.theme});
 }
+
+class MaterialAppInitialState extends MaterialAppState {
+
+}

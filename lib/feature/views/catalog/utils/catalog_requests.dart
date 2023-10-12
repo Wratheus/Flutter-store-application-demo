@@ -15,14 +15,12 @@ class CatalogRequests {
     ApiResult res = await ApiController.call(methodName: path, args: args);
 
     List<Product> getCategoryProductList = [];
-    print(res.status);
     if (res.status == true) {
       res.data["api_data"]["aProduct"].forEach((productJson) {
         Product prod = Product.fromJson(productJson);
         getCategoryProductList.add(prod);
       });
       res.data = getCategoryProductList;
-      print(res.data);
     }
     return res;
   }

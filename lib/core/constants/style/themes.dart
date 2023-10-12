@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:lichi_test/core/constants/style/text_styles.dart';
 
 import 'colors.dart';
-import 'layout_constants.dart';
 
 abstract class AppTheme {}
 
@@ -16,7 +15,6 @@ class LightTheme extends AppTheme {
   static const Color red = CustomColors.red;
 
   static ThemeData themeData = ThemeData(
-    fontFamily: 'Urbanist',
     primaryColor: primary,
     primaryColorDark: secondary,
     hintColor: hint,
@@ -34,12 +32,12 @@ class LightTheme extends AppTheme {
         displayLarge: CustomTextStyles.darkBoldTextColor,
         headlineMedium: CustomTextStyles.redTextColor),
     iconTheme:
-        const IconThemeData(color: primary, size: LayoutConstants.iconSize),
+        const IconThemeData(color: primary, size: 15),
     scaffoldBackgroundColor: secondary,
     appBarTheme: const AppBarTheme(
       color: secondary,
       elevation: 0,
-      iconTheme: IconThemeData(color: primary, size: LayoutConstants.iconSize),
+      iconTheme: IconThemeData(color: primary, size: 15),
       centerTitle: true,
     ),
     inputDecorationTheme: const InputDecorationTheme(
@@ -83,7 +81,6 @@ class DarkTheme extends AppTheme {
   static const Color red = CustomColors.red;
 
   static ThemeData themeData = ThemeData(
-    fontFamily: 'Urbanist',
     primaryColor: primary,
     primaryColorDark: canvas,
     canvasColor: secondary,
@@ -105,11 +102,11 @@ class DarkTheme extends AppTheme {
       labelLarge: CustomTextStyles.whiteBoldTextColor,
     ),
     iconTheme:
-        const IconThemeData(color: primary, size: LayoutConstants.iconSize),
+        const IconThemeData(color: primary, size: 15),
     appBarTheme: const AppBarTheme(
       color: canvas,
       elevation: 0,
-      iconTheme: IconThemeData(color: primary, size: LayoutConstants.iconSize),
+      iconTheme: IconThemeData(color: primary, size: 15),
       centerTitle: true,
     ),
     scaffoldBackgroundColor: canvas,

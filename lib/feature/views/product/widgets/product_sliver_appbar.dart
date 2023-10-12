@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 
-import '../../../widgets/buttons/cart_button.dart';
+import '../../../widgets/buttons/cart_button/cart_button.dart';
 import '../../../widgets/buttons/closure_button.dart';
+import '../../../widgets/containers/cached_image_container.dart';
 import '../models/product.dart';
 
 class ProductSliverAppBar extends StatelessWidget {
@@ -19,7 +20,7 @@ class ProductSliverAppBar extends StatelessWidget {
             fit: StackFit.expand,
             alignment: Alignment.bottomCenter,
             children: [
-              Image.network(product.photos[0].bigImage, fit: BoxFit.fill),
+              CachedImageContainer(imageUrl: product.photos[0].bigImage),
               const Positioned(
                 left: 0,
                 top: 0,

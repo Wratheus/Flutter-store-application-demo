@@ -34,7 +34,7 @@ class ProductAddDialog extends StatelessWidget {
                         child: CustomContainer(
                           imageUrl: product.photos[0].smallImage,
                           size: const Size(150, 150),
-                          child: const Placeholder(),
+                          fit: BoxFit.fitWidth,
                         )),
                     Text("Платье мини с объемными рукавами и вырезом на спинке",
                         style: context.theme.textTheme.bodyMedium,

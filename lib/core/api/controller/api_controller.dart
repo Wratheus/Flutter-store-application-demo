@@ -24,7 +24,6 @@ class ApiController {
           .timeout(
             const Duration(seconds: 30),
           );
-      print(response.statusCode);
       if (response.statusCode == 200) {
         final Map<String, dynamic> responseData = jsonDecode(response.data);
         return ApiResult.complete(responseData);
