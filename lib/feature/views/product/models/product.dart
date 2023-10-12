@@ -2,7 +2,6 @@ import 'package:lichi_test/feature/views/product/models/product_colors.dart';
 import 'package:lichi_test/feature/views/product/models/product_photo.dart';
 
 class Product {
-
   late int id;
   late String brandName;
   late String categoryId;

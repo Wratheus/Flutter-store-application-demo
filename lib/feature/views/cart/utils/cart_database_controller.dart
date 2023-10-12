@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart';
 import 'package:lichi_test/core/database/database.dart';
 
-import '../../product/models/product.dart';
 import '../../../../core/database/controllers/database_controller.dart';
+import '../../product/models/product.dart';
 
 class CartDatabaseController extends AppDatabase
     implements DatabaseController<Product> {
@@ -16,7 +16,8 @@ class CartDatabaseController extends AppDatabase
     List<UserCartData> tableData = await selectAllUserCartData();
     for (UserCartData element in tableData) {
       if (item.id == element.id) {
-        await update(userCart).replace(element.copyWith(itemCount: element.itemCount + 1));
+        await update(userCart)
+            .replace(element.copyWith(itemCount: element.itemCount + 1));
         return 0;
         // if Duplicate exist increment item count and update DB
       }
@@ -31,15 +32,18 @@ class CartDatabaseController extends AppDatabase
       itemCount: const Value(1),
     )));
   }
-  Future insertUserCartDataFromUserCartData({required UserCartData item}) async {
+
+  Future insertUserCartDataFromUserCartData(
+      {required UserCartData item}) async {
     List<UserCartData> tableData = await selectAllUserCartData();
     for (UserCartData element in tableData) {
       if (item.id == element.id) {
-        return await update(userCart).replace(element.copyWith(itemCount: element.itemCount + 1)); // if Duplicate exist increment item count and update DB
+        return await update(userCart).replace(element.copyWith(
+            itemCount: element.itemCount +
+                1)); // if Duplicate exist increment item count and update DB
       }
     }
   }
-
 
   @override
   Future<Object> removeUserCartData({required int itemId}) async {
@@ -51,7 +55,6 @@ class CartDatabaseController extends AppDatabase
                 1)); // if Duplicate exist decrement item count and update DB
       }
     }
-    return await (delete(userCart)..where((tbl) => tbl.id.equals(itemId)))
-        .go();
+    return await (delete(userCart)..where((tbl) => tbl.id.equals(itemId))).go();
   }
 }

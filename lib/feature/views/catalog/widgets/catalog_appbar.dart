@@ -17,6 +17,7 @@ class CatalogAppBar extends AppBar implements PreferredSizeWidget {
       ],
     );
   }
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

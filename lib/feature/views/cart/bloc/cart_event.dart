@@ -1,13 +1,10 @@
 part of 'cart_bloc.dart';
 
 @immutable
-abstract class CartEvent {
+abstract class CartEvent {}
 
-}
+class CartLoadEvent extends CartEvent {}
 
-class CartLoadEvent extends CartEvent {
-
-}
 class CartUpdateProductEvent extends CartEvent {
   final Function action;
   final Function updateButton;

@@ -1,14 +1,15 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 extension SizedContext on BuildContext {
   ThemeData get theme => Theme.of(this);
-  MediaQueryData get mq => MediaQuery.of(this);
-  Size get sizePx => mq.size;
-  double get widthPx => sizePx.width;
-  double get heightPx => sizePx.height;
 
+  MediaQueryData get mq => MediaQuery.of(this);
+
+  Size get sizePx => mq.size;
+
+  double get widthPx => sizePx.width;
+
+  double get heightPx => sizePx.height;
 }
 
 extension ColorExtension on String {

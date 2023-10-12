@@ -19,14 +19,13 @@ class CachedImageContainer extends StatelessWidget {
                   CircularProgressIndicator(color: context.theme.primaryColor));
         },
         imageBuilder: (context, imageProvider) => Container(
-          width: size?.width,
-          height: size?.height,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
-            image: DecorationImage(
-                image: imageProvider, fit: BoxFit.cover),
-          ),
-        ),
+              width: size?.width,
+              height: size?.height,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(18),
+                image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+              ),
+            ),
         errorWidget: (BuildContext context, String url, Object error) {
           return Center(
               child: Text("Не удалось загрузить картинку!",

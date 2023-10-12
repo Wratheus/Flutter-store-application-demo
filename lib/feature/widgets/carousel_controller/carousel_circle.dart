@@ -12,8 +12,10 @@ class CarouselCircleContainer extends StatefulWidget {
     _CarouselCircleContainerState()._selectCircle();
   }
 }
+
 class _CarouselCircleContainerState extends State<CarouselCircleContainer> {
   final bool _isSelected = false;
+
   @override
   Widget build(BuildContext context) {
     Color colorSelected = context.theme.primaryColor;
@@ -22,7 +24,8 @@ class _CarouselCircleContainerState extends State<CarouselCircleContainer> {
         width: 6,
         height: 6,
         decoration: BoxDecoration(
-            shape: BoxShape.circle, color: _isSelected ? colorSelected : colorDisabled));
+            shape: BoxShape.circle,
+            color: _isSelected ? colorSelected : colorDisabled));
   }
 
   _selectCircle() {

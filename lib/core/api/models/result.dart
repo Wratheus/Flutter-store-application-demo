@@ -5,10 +5,7 @@ class ApiResult<T> {
   ApiResult({required this.status, this.data});
 
   static ApiResult complete(Map<String, dynamic> responseData) {
-    return ApiResult(
-        status: true,
-        data: responseData
-    );
+    return ApiResult(status: true, data: responseData);
   }
 
   static error() {

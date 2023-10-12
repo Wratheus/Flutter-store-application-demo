@@ -8,13 +8,19 @@ import '../bloc/catalog_bloc.dart';
 
 class CatalogCategoryPicker extends StatelessWidget {
   final String category;
-  final Map<String, String> categories = {"new": "Новинки", "dresses": "Платья", "skirts": "Юбки", "shoes": "Обувь"};
+  final Map<String, String> categories = {
+    "new": "Новинки",
+    "dresses": "Платья",
+    "skirts": "Юбки",
+    "shoes": "Обувь"
+  };
 
   CatalogCategoryPicker({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+        behavior: HitTestBehavior.translucent,
         onTap: () {
           showMaterialModalBottomSheet(
             backgroundColor: Colors.transparent,
@@ -23,9 +29,8 @@ class CatalogCategoryPicker extends StatelessWidget {
               return Container(
                 margin: const EdgeInsets.all(15),
                 decoration: BoxDecoration(
-                  color: context.theme.scaffoldBackgroundColor,
-                  borderRadius: BorderRadius.circular(50)
-                ),
+                    color: context.theme.scaffoldBackgroundColor,
+                    borderRadius: BorderRadius.circular(50)),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
                   child: Column(
@@ -35,23 +40,27 @@ class CatalogCategoryPicker extends StatelessWidget {
                           padding: const EdgeInsets.all(20.0),
                           child: Text("Выберите категорию",
                               style: context.theme.textTheme.bodyMedium)),
-                      for(MapEntry entry in categories.entries)
+                      for (MapEntry entry in categories.entries)
                         if (entry.key == "new")
                           GestureDetector(
-                                      onTap: () => _changeCategory(context, _, entry.key),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Text(entry.value,
-                                            style: CustomTextStyles.redTextColor),
-                                      ))
-                         else
+                              behavior: HitTestBehavior.translucent,
+                              onTap: () =>
+                                  _changeCategory(context, _, entry.key),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Text(entry.value,
+                                    style: CustomTextStyles.redTextColor),
+                              ))
+                        else
                           GestureDetector(
-                                    onTap: () => _changeCategory(context, _, entry.key),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Text(entry.value,
-                                          style: context.theme.textTheme.bodyMedium),
-                                    ))
+                              behavior: HitTestBehavior.translucent,
+                              onTap: () =>
+                                  _changeCategory(context, _, entry.key),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Text(entry.value,
+                                    style: context.theme.textTheme.bodyMedium),
+                              ))
                     ],
                   ),
                 ),
@@ -64,13 +73,18 @@ class CatalogCategoryPicker extends StatelessWidget {
           children: [
             Text(categories[category]!,
                 textAlign: TextAlign.center,
-                style: context.theme.textTheme.bodyMedium),
+                style: category == "new"
+                    ? CustomTextStyles.redTextColor
+                    : context.theme.textTheme.bodyMedium),
           ],
         ));
   }
 
-  _changeCategory(BuildContext context, BuildContext modalContext, String category) {
+  _changeCategory(
+      BuildContext context, BuildContext modalContext, String category) {
     Navigator.pop(modalContext);
-    context.read<CatalogBloc>().add(CatalogLoadEvent(catalogCategory: category));
+    context
+        .read<CatalogBloc>()
+        .add(CatalogLoadEvent(catalogCategory: category));
   }
 }

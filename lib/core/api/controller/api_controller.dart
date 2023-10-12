@@ -16,7 +16,6 @@ class ApiController {
     args ??= {};
     final String requestPath = '${Constants.apiPath}$methodName';
 
-
     try {
       final Response response = await _dioClient
           .post(requestPath,

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:lichi_test/core/constants/style/text_styles.dart';
 
@@ -31,8 +29,7 @@ class LightTheme extends AppTheme {
         displaySmall: CustomTextStyles.darkSmallTextColor,
         displayLarge: CustomTextStyles.darkBoldTextColor,
         headlineMedium: CustomTextStyles.redTextColor),
-    iconTheme:
-        const IconThemeData(color: primary, size: 15),
+    iconTheme: const IconThemeData(color: primary, size: 15),
     scaffoldBackgroundColor: secondary,
     appBarTheme: const AppBarTheme(
       color: secondary,
@@ -101,8 +98,7 @@ class DarkTheme extends AppTheme {
       labelMedium: CustomTextStyles.whiteTextColor,
       labelLarge: CustomTextStyles.whiteBoldTextColor,
     ),
-    iconTheme:
-        const IconThemeData(color: primary, size: 15),
+    iconTheme: const IconThemeData(color: primary, size: 15),
     appBarTheme: const AppBarTheme(
       color: canvas,
       elevation: 0,

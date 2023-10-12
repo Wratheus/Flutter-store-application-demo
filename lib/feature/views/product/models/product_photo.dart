@@ -3,7 +3,6 @@ class ProductPhoto {
   late String mediumImage;
   late String smallImage;
 
-
   ProductPhoto.fromJson(Map<String, dynamic> json) {
     bigImage = json['big'];
     mediumImage = json['thumbs']['768_1024'];

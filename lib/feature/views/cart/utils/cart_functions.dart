@@ -1,5 +1,9 @@
+import 'package:flutter/material.dart';
+
 import '../../../../core/database/database.dart';
+import '../../../../core/utils/ui/page_transition.dart';
 import '../../../app/app.dart';
+import '../../product/product_view.dart';
 
 class CartFunctions {
   static num calculateCartPrice(List<UserCartData> cartProductList) {
@@ -17,5 +21,11 @@ class CartFunctions {
       cartItemCounter += element.itemCount;
     }
     return cartItemCounter;
+  }
+
+  static void loadProductById(
+      {required BuildContext context, required UserCartData userCartData}) {
+    Navigator.push(context,
+        SlideRightRoute(page: ProductView(productId: userCartData.itemId)));
   }
 }
