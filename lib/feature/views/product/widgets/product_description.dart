@@ -43,6 +43,7 @@ class ProductDescription extends StatelessWidget {
                   child: Text(
                     product.name,
                     style: context.theme.textTheme.bodyMedium,
+                    textAlign: TextAlign.center,
                   ),
                 ),
                 Row(

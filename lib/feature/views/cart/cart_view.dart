@@ -51,31 +51,26 @@ class CartView extends StatelessWidget {
                     )),
               ),
               body: state.cartProductList.isNotEmpty
-                  ? Padding(
-                      padding: const EdgeInsets.all(14.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              ListView.builder(
-                                physics: const AlwaysScrollableScrollPhysics(),
-                                itemCount: state.cartProductList.length,
-                                shrinkWrap: true,
-                                itemBuilder: (BuildContext _, int index) {
-                                  return CartProductCard(
-                                      parentContext: context,
-                                      product: state.cartProductList[index]);
-                                },
-                              ),
-                            ],
+                  ? CustomScrollView(
+                      slivers: [
+                        SliverPadding(
+                          padding: const EdgeInsets.all(14.0),
+                          sliver: SliverList.builder(
+                            itemCount: state.cartProductList.length,
+                            itemBuilder: (BuildContext _, int index) {
+                              return CartProductCard(
+                                  parentContext: context,
+                                  product: state.cartProductList[index]);
+                            },
                           ),
-                          const Spacer(),
-                          CartFooter(cartProductList: state.cartProductList)
-                        ],
-                      ),
+                        ),
+                        SliverToBoxAdapter(
+                            child: Padding(
+                              padding: const EdgeInsets.all(14.0),
+                              child: CartFooter(
+                                  cartProductList: state.cartProductList),
+                            )),
+                      ],
                     )
                   : Center(
                       child: Text(

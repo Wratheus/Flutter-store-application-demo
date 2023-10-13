@@ -10,15 +10,16 @@ import '../../product/product_view.dart';
 
 class CatalogProductCard extends StatelessWidget {
   final Product product;
+  final BuildContext parentContext;
 
-  const CatalogProductCard({super.key, required this.product});
+  const CatalogProductCard({super.key, required this.product, required this.parentContext});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () => {
-        Navigator.of(context)
+        Navigator.of(parentContext)
             .push(SlideRightRoute(page: ProductView(product: product)))
       },
       child: Column(
@@ -27,7 +28,7 @@ class CatalogProductCard extends StatelessWidget {
               items: CatalogFunctions.getCatalogCardImages(product: product),
               options: CarouselOptions(
                 viewportFraction: 1,
-                height: 235,
+                height: 225,
                 enableInfiniteScroll: true,
                 autoPlay: false,
                 scrollDirection: Axis.horizontal,
@@ -37,12 +38,12 @@ class CatalogProductCard extends StatelessWidget {
             child: Text(
               "${product.price} руб.",
               textAlign: TextAlign.center,
-              style: context.theme.textTheme.bodyLarge,
+              style: parentContext.theme.textTheme.bodyLarge,
             ),
           ),
           Text(
             product.name,
-            style: context.theme.textTheme.bodySmall,
+            style: parentContext.theme.textTheme.bodySmall,
             textAlign: TextAlign.center,
           ),
           Padding(

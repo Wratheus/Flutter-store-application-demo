@@ -17,13 +17,11 @@ class CatalogProductGrid extends StatelessWidget {
           crossAxisSpacing: 5,
           mainAxisExtent: 250 + 100),
       delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          return CatalogProductCard(product: products[index]);
+        (_, index) {
+          return CatalogProductCard(product: products[index], parentContext: context);
         },
         childCount: products.length,
       ),
     );
   }
 }
-
-//CatalogProductCard(product: products[index]);

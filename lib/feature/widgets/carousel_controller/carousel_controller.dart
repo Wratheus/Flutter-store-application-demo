@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 import 'package:lichi_test/feature/widgets/carousel_controller/carousel_circle.dart';
 
+import '../../views/product/models/product_photo.dart';
+
 class CarouselControllerWidget extends StatelessWidget {
-  final List<Widget> images;
+  final List<ProductPhoto> images;
 
   const CarouselControllerWidget({super.key, required this.images});
 
@@ -12,20 +13,15 @@ class CarouselControllerWidget extends StatelessWidget {
     return Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: context.theme.primaryColor),
+            color: Colors.white60),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Row(children: buildCircles()),
+          child: Row(children: [
+            for (var element in images) const Padding(
+              padding: EdgeInsets.only(left: 3.0),
+              child: CarouselCircleContainer(),
+            )
+          ]),
         ));
-  }
-
-  List<CarouselCircleContainer> buildCircles() {
-    List<CarouselCircleContainer> circles = [];
-
-    for (var element in images) {
-      circles.add(const CarouselCircleContainer());
-    }
-    circles[0].selectCircle();
-    return circles;
   }
 }

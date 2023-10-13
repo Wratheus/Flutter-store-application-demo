@@ -21,12 +21,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   _addToCart(ProductAddToCartEvent event, Emitter<ProductState> emit) async {
     emit(ProductLoadingState());
     try {
-      await App.db.insertUserCartData(item: event.product);
       event.context.read<CartButtonBloc>().add(CartButtonUpdate());
       emit(ProductLoadedState(product: event.product));
       AppUIModals.showCupertinoModalDialog(
           context: event.context,
           child: ProductAddDialog(product: event.product));
+      await App.db.insertUserCartData(item: event.product);
     } catch (e) {
       print(e);
       emit(ProductErrorState());

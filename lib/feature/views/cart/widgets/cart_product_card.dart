@@ -37,6 +37,17 @@ class CartProductCard extends StatelessWidget {
                 CachedImageContainer(
                   size: const Size(137, 184),
                   imageUrl: product.imageUrl,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.white60),
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: ProductColorCircle(
+                        colorStr: product.itemColor,
+                        size: const Size(12, 12),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -57,19 +68,6 @@ class CartProductCard extends StatelessWidget {
                     child: Text(
                       "Размер ${product.itemSize}",
                       style: context.theme.textTheme.bodySmall,
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.black.withOpacity(0.8)
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: ProductColorCircle(
-                        colorStr: product.itemColor,
-                        size: const Size(12, 12),
-                      ),
                     ),
                   ),
                   Padding(
