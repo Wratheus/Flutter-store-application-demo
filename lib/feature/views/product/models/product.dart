@@ -43,7 +43,7 @@ class Product {
     json['photos'].forEach((photoJson) {
       photos.add(ProductPhoto.fromJson(photoJson));
     });
-    descriptions = json['descriptions']['text'];
+    descriptions = json['descriptions']['mark_down'];
     try {
       modelSize = json['model']["size"];
     } catch (e) {

@@ -6,9 +6,10 @@ import '../../core/constants/style/colors.dart';
 class ProductColorCircle extends StatelessWidget {
   final String colorStr;
   final Size size;
+  final Widget? child;
 
   const ProductColorCircle(
-      {super.key, required this.colorStr, required this.size});
+      {super.key, required this.colorStr, required this.size, this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,7 @@ class ProductColorCircle extends StatelessWidget {
               : null,
           color: colorStr.toColor(),
           shape: BoxShape.circle),
+      child: child,
     );
   }
 }

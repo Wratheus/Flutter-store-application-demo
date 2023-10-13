@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 import 'package:lichi_test/feature/views/cart/bloc/cart_bloc.dart';
-import 'package:lichi_test/feature/views/cart/utils/cart_functions.dart';
 import 'package:lichi_test/feature/views/cart/widgets/cart_footer.dart';
 import 'package:lichi_test/feature/views/cart/widgets/cart_product_card.dart';
 import 'package:lichi_test/feature/views/catalog/catalog_view.dart';
-import 'package:lichi_test/feature/widgets/buttons/rectangle_button.dart';
 import 'package:lichi_test/feature/widgets/custom_loading_widget.dart';
 import 'package:lichi_test/feature/widgets/dialogs/error_dialog.dart';
 
@@ -53,25 +51,32 @@ class CartView extends StatelessWidget {
                     )),
               ),
               body: state.cartProductList.isNotEmpty
-                  ? SingleChildScrollView(
-                      child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                  ? Padding(
+                      padding: const EdgeInsets.all(14.0),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: state.cartProductList.length,
-                            shrinkWrap: true,
-                            itemBuilder: (BuildContext _, int index) {
-                              return CartProductCard(
-                                  parentContext: context,
-                                  product: state.cartProductList[index]);
-                            },
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              ListView.builder(
+                                physics: const AlwaysScrollableScrollPhysics(),
+                                itemCount: state.cartProductList.length,
+                                shrinkWrap: true,
+                                itemBuilder: (BuildContext _, int index) {
+                                  return CartProductCard(
+                                      parentContext: context,
+                                      product: state.cartProductList[index]);
+                                },
+                              ),
+                            ],
                           ),
+                          const Spacer(),
                           CartFooter(cartProductList: state.cartProductList)
                         ],
                       ),
-                    ))
+                    )
                   : Center(
                       child: Text(
                       "Корзина пустая\n Добавьте все что вы хотите.",

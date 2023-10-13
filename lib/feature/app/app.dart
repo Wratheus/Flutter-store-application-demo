@@ -13,11 +13,6 @@ class App extends StatelessWidget {
 
   const App({super.key});
 
-  // TODO -	Подгрузка товаров по мере прокрутки
-  // TODO - контроллер карусели
-  // TODO подогнать шрифты и паддинги
-  // TODO добавить сплэш скрин
-  // TODO добавить иконку приложени
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

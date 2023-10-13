@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
+import '../../../../core/constants/style/colors.dart';
 import '../../../../core/constants/style/text_styles.dart';
 import '../bloc/catalog_bloc.dart';
 
@@ -76,6 +77,13 @@ class CatalogCategoryPicker extends StatelessWidget {
                 style: category == "new"
                     ? CustomTextStyles.redTextColor
                     : context.theme.textTheme.bodyMedium),
+            Padding(
+              padding: const EdgeInsets.only(left: 5.0),
+              child: Icon(Icons.arrow_drop_down_rounded,
+                  color: category == "new"
+                      ? CustomColors.red
+                      : context.theme.primaryColor),
+            )
           ],
         ));
   }

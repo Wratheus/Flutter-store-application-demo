@@ -28,6 +28,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           context: event.context,
           child: ProductAddDialog(product: event.product));
     } catch (e) {
+      print(e);
       emit(ProductErrorState());
     }
   }

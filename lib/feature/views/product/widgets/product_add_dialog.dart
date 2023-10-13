@@ -17,7 +17,7 @@ class ProductAddDialog extends StatelessWidget {
     return Scaffold(
         body: SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(5.0),
         child: SizedBox(
           height: context.mq.size.height,
           child: Column(
@@ -30,7 +30,7 @@ class ProductAddDialog extends StatelessWidget {
                     Text("Добавлено в корзину",
                         style: context.theme.textTheme.bodyLarge),
                     Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 60.0),
+                        padding: const EdgeInsets.symmetric(vertical: 75.0),
                         child: CustomContainer(
                           imageUrl: product.photos[0].smallImage,
                           size: const Size(150, 150),
@@ -40,7 +40,7 @@ class ProductAddDialog extends StatelessWidget {
                         style: context.theme.textTheme.bodyMedium,
                         textAlign: TextAlign.center),
                     Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
+                      padding: const EdgeInsets.only(top: 22.0),
                       child: Text("Размер ${product.modelSize}",
                           style: context.theme.textTheme.bodyLarge,
                           textAlign: TextAlign.center),

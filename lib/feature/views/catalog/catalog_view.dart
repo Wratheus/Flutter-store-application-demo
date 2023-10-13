@@ -38,17 +38,18 @@ class CatalogView extends StatelessWidget {
                       child: CartCounterButton(),
                     ),
                   ]),
-              body: CustomScrollView(slivers: [
+              body: CustomScrollView(
+                  slivers: [
                 SliverList(
                   delegate: SliverChildBuilderDelegate((_, int index) {
                     return Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(5.0),
                       child: Column(
                         children: [
                           const CatalogHeader(),
                           const CatalogThemeSwitcher(),
                           Padding(
-                            padding: const EdgeInsets.all(30.0),
+                            padding: const EdgeInsets.only(bottom: 30.0, top: 40.0),
                             child:
                                 CatalogCategoryPicker(category: state.category),
                           ),
@@ -58,7 +59,7 @@ class CatalogView extends StatelessWidget {
                   }, childCount: 1),
                 ),
                 SliverPadding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(5.0),
                   sliver: CatalogProductGrid(products: state.catalogData),
                 ),
               ]),

@@ -40,45 +40,46 @@ class CartProductCard extends StatelessWidget {
                 ),
               ],
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  child: SizedBox(
+            Padding(
+              padding: const EdgeInsets.only(left: 24.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
                     width: 150,
                     child: Text(
                       product.title,
                       style: context.theme.textTheme.bodySmall,
                     ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  child: Text(
-                    "Размер ${product.itemSize}",
-                    style: context.theme.textTheme.bodySmall,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 9.0, bottom: 25),
+                    child: Text(
+                      "Размер ${product.itemSize}",
+                      style: context.theme.textTheme.bodySmall,
+                    ),
                   ),
-                ),
-                Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    child: ProductColorCircle(
-                      colorStr: product.itemColor,
-                      size: const Size(18, 18),
-                    )),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    "${product.itemPrice} руб.",
-                    style: context.theme.textTheme.bodyLarge,
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.black.withOpacity(0.8)
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: ProductColorCircle(
+                        colorStr: product.itemColor,
+                        size: const Size(12, 12),
+                      ),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Row(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 18.0),
+                    child: Text(
+                      "${product.itemPrice} руб.",
+                      style: context.theme.textTheme.bodyLarge,
+                    ),
+                  ),
+                  Row(
                     children: [
                       GestureDetector(
                         behavior: HitTestBehavior.translucent,
@@ -95,11 +96,8 @@ class CartProductCard extends StatelessWidget {
                           child: Center(child: Icon(Icons.add)),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text("${product.itemCount} ед.",
-                            style: context.theme.textTheme.bodyMedium),
-                      ),
+                      Text("${product.itemCount} ед.",
+                          style: context.theme.textTheme.bodyMedium),
                       GestureDetector(
                         onTap: () {
                           context.read<CartBloc>().add(CartUpdateProductEvent(
@@ -114,9 +112,9 @@ class CartProductCard extends StatelessWidget {
                         ),
                       )
                     ],
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             )
           ],
         ),

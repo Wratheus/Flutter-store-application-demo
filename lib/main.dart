@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'feature/app/app.dart';
-import 'feature/views/cart/utils/cart_database_controller.dart';
 
 void main() {
-  runApp(App());
+  WidgetsFlutterBinding.ensureInitialized();
+  // TODO fix добавление в корзину
+  // TODO контроллер карусели
+  //  TODO вложить контроллер и цвет в корзине в картинку
+  // TODO fix cart scrollview
+  // TODO прогрузка по мере прокрутки
+  runApp(const App());
 }
 
 

@@ -15,19 +15,28 @@ class ErrorDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(error, style: context.theme.textTheme.bodyMedium),
-          RectangleButton(
-              onPressed: () {
-                Navigator.of(context)
-                    .pushReplacement(SlideRightRoute(page: route));
-              },
-              child:
-                  Text("Повторить", style: context.theme.textTheme.bodyMedium))
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(error, style: context.theme.textTheme.bodyMedium, textAlign: TextAlign.center,),
+              const SizedBox(height: 200),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 80),
+                child: RectangleButton(
+                  size: const Size(150, 51),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushReplacement(SlideRightRoute(page: route));
+                    },
+                    child:
+                        Text("Повторить", style: context.theme.textTheme.bodyMedium)),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

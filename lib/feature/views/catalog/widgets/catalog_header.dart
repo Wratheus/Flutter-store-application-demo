@@ -7,12 +7,12 @@ class CatalogHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 40.0),
       child: Text(
         "Каждый день тысячи девушек распаковывают пакеты с "
         "новинками Lichi и становятся счастливее, ведь очевидно, "
         "что новое платье может изменить день, а с ним и всю жизнь!",
-        style: context.theme.textTheme.bodyMedium,
+        style: context.theme.textTheme.bodySmall,
         textAlign: TextAlign.center,
       ),
     );

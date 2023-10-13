@@ -20,9 +20,12 @@ class ProductDescription extends StatelessWidget {
       )
     ];
     for (String element in product.colors.otherColors) {
-      circleColors.add(ProductColorCircle(
-        size: const Size(18, 18),
-        colorStr: element,
+      circleColors.add(Padding(
+        padding: const EdgeInsets.only(left: 16.0),
+        child: ProductColorCircle(
+          size: const Size(18, 18),
+          colorStr: element,
+        ),
       ));
     }
 
@@ -30,16 +33,13 @@ class ProductDescription extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
             (_, int index) {
           return Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(21.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(
-                  height: 20,
-                ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(vertical: 27.0),
                   child: Text(
                     product.name,
                     style: context.theme.textTheme.bodyMedium,
@@ -49,7 +49,7 @@ class ProductDescription extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: circleColors),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(top: 8, bottom: 22),
                   child: Text(
                     product.colors.colorName,
                     style: context.theme.textTheme.bodySmall,

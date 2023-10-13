@@ -15,7 +15,6 @@ class CatalogProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String colorStr = product.colors.colorValue;
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () => {
@@ -28,27 +27,40 @@ class CatalogProductCard extends StatelessWidget {
               items: CatalogFunctions.getCatalogCardImages(product: product),
               options: CarouselOptions(
                 viewportFraction: 1,
-                height: 240,
+                height: 235,
                 enableInfiniteScroll: true,
                 autoPlay: false,
                 scrollDirection: Axis.horizontal,
               )),
-          const SizedBox(height: 5),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12.0),
+            child: Text(
+              "${product.price} руб.",
+              textAlign: TextAlign.center,
+              style: context.theme.textTheme.bodyLarge,
+            ),
+          ),
           Text(
             product.name,
             style: context.theme.textTheme.bodySmall,
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 5),
-          Text(
-            product.price,
-            textAlign: TextAlign.center,
-            style: context.theme.textTheme.bodySmall,
-          ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10.0),
-            child: ProductColorCircle(
-                size: const Size(15, 15), colorStr: colorStr),
+            padding: const EdgeInsets.symmetric(vertical: 12.0),
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              ProductColorCircle(
+                size: const Size(10, 10),
+                colorStr: product.colors.colorValue,
+              ),
+              for (String element in product.colors.otherColors)
+                Padding(
+                  padding: const EdgeInsets.only(left: 9.0),
+                  child: ProductColorCircle(
+                    size: const Size(10, 10),
+                    colorStr: element,
+                  ),
+                )
+            ]),
           )
         ],
       ),

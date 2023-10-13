@@ -5,8 +5,9 @@ import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 class CachedImageContainer extends StatelessWidget {
   final String imageUrl;
   final Size? size;
+  final BorderRadius? borderRadius;
 
-  const CachedImageContainer({super.key, this.size, required this.imageUrl});
+  const CachedImageContainer({super.key, this.size, required this.imageUrl, this.borderRadius});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class CachedImageContainer extends StatelessWidget {
               width: size?.width,
               height: size?.height,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: borderRadius ?? BorderRadius.circular(18),
                 image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
               ),
             ),

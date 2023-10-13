@@ -1,13 +1,15 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 
 import '../../../widgets/buttons/cart_button/cart_button.dart';
 import '../../../widgets/buttons/closure_button.dart';
-import '../../../widgets/containers/cached_image_container.dart';
+import '../../catalog/utils/catalog_functions.dart';
 import '../models/product.dart';
 
 class ProductHeader extends StatelessWidget {
   final Product product;
+
   const ProductHeader({super.key, required this.product});
 
   @override
@@ -16,7 +18,16 @@ class ProductHeader extends StatelessWidget {
       fit: StackFit.expand,
       alignment: Alignment.bottomCenter,
       children: [
-        CachedImageContainer(imageUrl: product.photos[0].bigImage),
+        CarouselSlider(
+            items: CatalogFunctions.getCatalogCardImages(
+                product: product, isBig: true, isBorder: false),
+            options: CarouselOptions(
+              viewportFraction: 1,
+              height: 550,
+              enableInfiniteScroll: true,
+              autoPlay: false,
+              scrollDirection: Axis.horizontal,
+            )),
         const Positioned(
           left: 0,
           top: 0,
