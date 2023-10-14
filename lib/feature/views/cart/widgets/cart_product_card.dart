@@ -91,11 +91,15 @@ class CartProductCard extends StatelessWidget {
                                   .add(CartButtonUpdate())));
                         },
                         child: const CustomContainer(
+                          size: Size(35, 35),
                           child: Center(child: Icon(Icons.add)),
                         ),
                       ),
-                      Text("${product.itemCount} ед.",
-                          style: context.theme.textTheme.bodyMedium),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text("${product.itemCount} ед.",
+                            style: context.theme.textTheme.bodyMedium),
+                      ),
                       GestureDetector(
                         onTap: () {
                           context.read<CartBloc>().add(CartUpdateProductEvent(
@@ -106,6 +110,7 @@ class CartProductCard extends StatelessWidget {
                                   .add(CartButtonUpdate())));
                         },
                         child: const CustomContainer(
+                          size: Size(35, 35),
                           child: Center(child: Icon(Icons.remove)),
                         ),
                       )

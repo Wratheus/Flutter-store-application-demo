@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lichi_test/feature/views/catalog/bloc/catalog_bloc.dart';
 import 'package:lichi_test/feature/widgets/buttons/cart_button/bloc/cart_button_bloc.dart';
 
 import '../../core/constants/style/themes.dart';
@@ -23,6 +24,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider<CartButtonBloc>(
           create: (context) => CartButtonBloc()..add(CartButtonUpdate()),
+        ),
+        BlocProvider<CatalogBloc>(
+          create: (context) => CatalogBloc()..add(CatalogLoadEvent()),
         )
       ],
       child: BlocBuilder<MaterialAppBloc, MaterialAppState>(
