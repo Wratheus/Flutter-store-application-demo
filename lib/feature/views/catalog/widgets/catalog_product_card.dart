@@ -46,7 +46,7 @@ class CatalogProductCard extends StatelessWidget {
                             onPageChanged: (index, event) => context
                                 .read<CarouselBloc>()
                                 .add(CarouselSelectedEvent(
-                                    selectedIndex: index + 1)),
+                                    selectedIndex: index)),
                             viewportFraction: 1,
                             height: 276,
                             enableInfiniteScroll: true,

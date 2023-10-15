@@ -21,7 +21,6 @@ class CatalogFunctions {
   static void loadScroll({required BuildContext context}) {
     CatalogLoadedState state = (context.read<CatalogBloc>().state
         as CatalogLoadedState); //hardcoded state
-    print(state.page);
     if (!(context.read<CatalogBloc>().isRequesting) &&
         state.maxPages != state.page) {
       context.read<CatalogBloc>().add(CatalogLoadScrollEvent(

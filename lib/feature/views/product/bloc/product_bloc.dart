@@ -28,7 +28,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           child: ProductAddDialog(product: event.product));
       await App.db.insertUserCartData(item: event.product);
     } catch (e) {
-      print(e);
       emit(ProductErrorState());
     }
   }

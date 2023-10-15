@@ -34,7 +34,6 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         isRequesting = false;
       }
     } catch (e, t) {
-      print(e);
       isRequesting = false;
       emit(CatalogErrorState());
     }
