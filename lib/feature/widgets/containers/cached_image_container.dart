@@ -30,7 +30,6 @@ class CachedImageContainer extends StatelessWidget {
                 width: size?.width,
                 height: size?.height,
                 decoration: BoxDecoration(
-                  borderRadius: borderRadius ?? BorderRadius.circular(18),
                   image:
                       DecorationImage(image: imageProvider, fit: BoxFit.cover),
                 ),

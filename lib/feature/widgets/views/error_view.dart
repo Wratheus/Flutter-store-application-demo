@@ -3,11 +3,11 @@ import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 import 'package:lichi_test/core/utils/ui/page_transition.dart';
 import 'package:lichi_test/feature/widgets/buttons/rectangle_button.dart';
 
-class ErrorDialog extends StatelessWidget {
+class ErrorView extends StatelessWidget {
   final String error;
   final Widget route;
 
-  const ErrorDialog(
+  const ErrorView(
       {super.key,
       this.error = "Произошла ошибка, пожалуйста повторите позднее",
       required this.route});

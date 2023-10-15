@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 import 'package:lichi_test/feature/views/catalog/catalog_view.dart';
 import 'package:lichi_test/feature/widgets/buttons/cart_button/bloc/cart_button_bloc.dart';
-import 'package:lichi_test/feature/widgets/dialogs/error_dialog.dart';
 
 import '../../../../core/utils/ui/page_transition.dart';
 import '../../../views/cart/cart_view.dart';
+import '../../views/error_view.dart';
 
 class CartCounterButton extends StatelessWidget {
   final Color? color;
@@ -83,7 +83,7 @@ class CartCounterButton extends StatelessWidget {
                                 shopBag,
                               ]);
                       }
-                      return const ErrorDialog(route: CatalogView());
+                      return const ErrorView(route: CatalogView());
                     })))));
   }
 }

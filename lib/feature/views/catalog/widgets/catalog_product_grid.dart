@@ -15,7 +15,7 @@ class CatalogProductGrid extends StatelessWidget {
           crossAxisCount: 2,
           mainAxisSpacing: 10,
           crossAxisSpacing: 5,
-          mainAxisExtent: 250 + 100),
+          mainAxisExtent: 276 + 130), //image size + text elements
       delegate: SliverChildBuilderDelegate(
         (_, index) {
           return CatalogProductCard(product: products[index], parentContext: context);

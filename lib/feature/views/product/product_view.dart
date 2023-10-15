@@ -4,9 +4,9 @@ import 'package:lichi_test/feature/views/catalog/catalog_view.dart';
 import 'package:lichi_test/feature/views/product/bloc/product_bloc.dart';
 import 'package:lichi_test/feature/views/product/widgets/product_description.dart';
 import 'package:lichi_test/feature/views/product/widgets/product_header.dart';
-import 'package:lichi_test/feature/widgets/custom_loading_widget.dart';
-import 'package:lichi_test/feature/widgets/dialogs/error_dialog.dart';
+import 'package:lichi_test/feature/widgets/views/error_view.dart';
 
+import '../../widgets/views/loading_view.dart';
 import 'models/product.dart';
 
 class ProductView extends StatelessWidget {
@@ -44,12 +44,12 @@ class ProductView extends StatelessWidget {
             );
           }
           if (state is ProductLoadingState || state is ProductInitialState) {
-            return const CustomLoadingWidget();
+            return const LoadingView();
           }
           if (state is ProductLoadedState) {
-            return const ErrorDialog(route: CatalogView());
+            return const ErrorView(route: CatalogView());
           }
-          return const ErrorDialog(route: CatalogView());
+          return const ErrorView(route: CatalogView());
         },
       ),
     );

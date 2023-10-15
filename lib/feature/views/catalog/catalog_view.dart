@@ -8,10 +8,10 @@ import 'package:lichi_test/feature/views/catalog/widgets/catalog_header.dart';
 import 'package:lichi_test/feature/views/catalog/widgets/catalog_load_page_circular.dart';
 import 'package:lichi_test/feature/views/catalog/widgets/catalog_product_grid.dart';
 import 'package:lichi_test/feature/views/catalog/widgets/catalog_theme_switcher.dart';
-import 'package:lichi_test/feature/widgets/custom_loading_widget.dart';
-import 'package:lichi_test/feature/widgets/dialogs/error_dialog.dart';
+import 'package:lichi_test/feature/widgets/views/loading_view.dart';
 
 import '../../widgets/buttons/cart_button/cart_button.dart';
+import '../../widgets/views/error_view.dart';
 
 class CatalogView extends StatefulWidget {
   const CatalogView({super.key});
@@ -28,11 +28,12 @@ class _CatalogViewState extends State<CatalogView> {
     return BlocBuilder<CatalogBloc, CatalogState>(
         builder: (BuildContext context, CatalogState state) {
       if (state is CatalogInitialState) {
-        return const CustomLoadingWidget();
+        return const LoadingView();
       }
       if (state is CatalogLoadedState) {
         return Scaffold(
           appBar: AppBar(
+              automaticallyImplyLeading: false,
               title: Text("Каталог товаров",
                   style: context.theme.textTheme.bodyMedium),
               actions: const [
@@ -70,10 +71,10 @@ class _CatalogViewState extends State<CatalogView> {
         );
       }
       if (state is CatalogLoadingState) {
-        return const CustomLoadingWidget();
+        return const LoadingView();
       }
       if (state is CatalogErrorState) {
-        return const ErrorDialog(route: CatalogView());
+        return const ErrorView(route: CatalogView());
       }
       return const Placeholder();
     });

@@ -5,10 +5,10 @@ import 'package:lichi_test/feature/views/cart/bloc/cart_bloc.dart';
 import 'package:lichi_test/feature/views/cart/widgets/cart_footer.dart';
 import 'package:lichi_test/feature/views/cart/widgets/cart_product_card.dart';
 import 'package:lichi_test/feature/views/catalog/catalog_view.dart';
-import 'package:lichi_test/feature/widgets/custom_loading_widget.dart';
-import 'package:lichi_test/feature/widgets/dialogs/error_dialog.dart';
+import 'package:lichi_test/feature/widgets/views/loading_view.dart';
 
 import '../../../core/utils/ui/page_transition.dart';
+import '../../widgets/views/error_view.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
@@ -24,13 +24,13 @@ class CartView extends StatelessWidget {
       child: BlocBuilder<CartBloc, CartState>(
           builder: (BuildContext context, CartState state) {
         if (state is CartInitialState) {
-          return const CustomLoadingWidget();
+          return const LoadingView();
         }
         if (state is CartLoadingState) {
-          return const CustomLoadingWidget();
+          return const LoadingView();
         }
         if (state is CartErrorState) {
-          return const ErrorDialog(route: CartView());
+          return const ErrorView(route: CartView());
         }
         if (state is CartLoadedState) {
           return Scaffold(

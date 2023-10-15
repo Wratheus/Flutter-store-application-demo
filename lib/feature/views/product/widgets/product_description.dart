@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
-import 'package:lichi_test/feature/widgets/product_color_circle.dart';
+import 'package:lichi_test/feature/views/product/widgets/product_color_circle.dart';
 
 import '../../../widgets/buttons/rectangle_button.dart';
 import '../bloc/product_bloc.dart';

@@ -15,7 +15,7 @@ class CartDatabaseController extends AppDatabase
   Future<int> insertUserCartData({required Product item}) async {
     List<UserCartData> tableData = await selectAllUserCartData();
     for (UserCartData element in tableData) {
-      if (item.id == element.id) {
+      if (item.id == element.itemId) {
         await update(userCart)
             .replace(element.copyWith(itemCount: element.itemCount + 1));
         return 0;
