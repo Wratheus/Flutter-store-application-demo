@@ -6,7 +6,7 @@ import 'package:lichi_test/feature/views/cart/bloc/cart_bloc.dart';
 import 'package:lichi_test/feature/views/cart/utils/cart_functions.dart';
 import 'package:lichi_test/feature/widgets/containers/cached_image_container.dart';
 import 'package:lichi_test/feature/widgets/containers/custom_container.dart';
-import 'package:lichi_test/feature/widgets/product_color_circle.dart';
+import 'package:lichi_test/feature/views/product/widgets/product_color_circle.dart';
 
 import '../../../app/app.dart';
 import '../../../widgets/buttons/cart_button/bloc/cart_button_bloc.dart';

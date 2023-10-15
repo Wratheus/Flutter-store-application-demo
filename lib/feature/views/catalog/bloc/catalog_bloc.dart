@@ -26,7 +26,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           category: event.catalogCategory);
       if (res.status) {
         emit(CatalogLoadedState(
-            catalogData: res.data["products"], category: event.catalogCategory, maxPages: res.data["maxPages"]));
+            catalogData: res.data["products"],
+            category: event.catalogCategory,
+            maxPages: res.data["maxPages"]));
         isRequesting = false;
       } else {
         isRequesting = false;
@@ -44,10 +46,13 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       ApiResult res = await CatalogRequests.getCategoryProductList(
           category: event.catalogCategory, page: event.currentPage);
       if (res.status) {
-        event.products
-            .addAll(res.data["products"]); // add new products to list of loaded products
+        event.products.addAll(res
+            .data["products"]); // add new products to list of loaded products
         emit(CatalogLoadedState(
-            catalogData: event.products, category: event.catalogCategory, maxPages: event.maxPages));
+            catalogData: event.products,
+            category: event.catalogCategory,
+            maxPages: event.maxPages,
+            page: event.currentPage));
         isRequesting = false;
       } else {
         isRequesting = false;

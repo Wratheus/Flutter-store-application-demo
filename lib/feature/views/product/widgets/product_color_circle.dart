@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lichi_test/core/utils/ui/build_context_extension.dart';
 
-import '../../core/constants/style/colors.dart';
+import '../../../../core/constants/style/colors.dart';
 
 class ProductColorCircle extends StatelessWidget {
   final String colorStr;
